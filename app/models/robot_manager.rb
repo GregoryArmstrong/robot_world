@@ -1,10 +1,13 @@
 require 'yaml/store'
-require_relative 'robot'
 
 class RobotManager
 
   def self.database
-    @database ||= YAML::Store.new("db/robot_manager")
+    if ENV["RACK_ENV"] == 'test'
+      @database ||= YAML::Store.new("db/robot_manager_test")
+    else
+      @database ||= YAML::Store.new("db/robot_manager")
+    end
   end
 
   def self.create(robot)
@@ -52,6 +55,13 @@ class RobotManager
   def self.delete(id)
     database.transaction do
       database['robots'].delete_if { |robot| robot["id"] == id }
+    end
+  end
+
+  def self.delete_all
+    database.transaction do
+      database['robots'] = []
+      database['total'] = 0
     end
   end
 
