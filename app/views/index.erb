@@ -1,10 +1,40 @@
-<h1>All Robots</h1>
+<div class="background grey lighten-2">
+<nav>
+  <div class="nav-wrapper light-blue darken-2">
+    <a href="#" class="brand-logo">Robo-Manager</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/">Dashboard</a></li>
+      <li class="active"><a href="/robots">Robot Index</a></li>
+      <li><a href="/robots/new">Hire a Robot</a></li>
+    </ul>
+  </div>
+</nav>
 
-<% @robots.each do |robot| %>
-  <h3><%= robot.id %>: <a href="/robots/<%= robot.id %>"><%= robot.name %></a></h3>
-  <h4><a href="/robots/<%= robot.id %>/edit">Edit Robot</a></h4>
-  <form action="/robots/<%= robot.id %>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
-  </form>
-<% end %>
+<div class="center-align">
+  <h4>All Robots</h4>
+</div>
+  <table class="highlight centered responsive-table">
+    <thead>
+      <tr>
+        <th data-field="Name">Name</th>
+        <th data-field="Department">Department</th>
+        <th data-field="Picture">Picture</th>
+        <th data-field="Edit">Edit</th>
+        <th data-field="Delete">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @robots.each do |robot| %>
+        <td><%= robot.name %></td>
+        <td><%= robot.department %></td>
+        <td><img src="https://robohash.org/<%= robot.avatar %>"></td>
+        <td><a href="/robots/<%= robot.id %>/edit">Edit Robot</a></td>
+        <td><form action="/robots/<%= robot.id %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete">
+          </form></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

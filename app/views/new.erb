@@ -1,10 +1,53 @@
+<div class="background grey lighten-2">
+<nav>
+  <div class="nav-wrapper light-blue darken-2">
+    <a href="#" class="brand-logo">Robo-Manager</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/robots">Robot Index</a></li>
+      <li class="active"><a href="/robots/new">Hire a Robot</a></li>
+    </ul>
+  </div>
+</nav>
+
 <form action="/robots" method="post">
   <p>Create a new Robot:</p>
-  <input type='text' name='robot[name]' placeholder='Name'/><br/>
-  <input type='text' name='robot[city]' placeholder='City'/><br/>
-  <input type='text' name='robot[state]' placeholder='State' /><br/>
-  <input type='text' name='robot[birth_date]' placeholder='Birth Year (YYYY)'/><br/>
-  <input type='text' name='robot[date_hired]' placeholder='Date Hired (DDMMYYYY)'/><br/>
-  <input type='text' name='robot[department]' placeholder='Department'/><br/>
-  <input type='submit' />
+  <div class="row">
+    <div class="col s12">
+      <div class="input-field col s6">
+        <input type='text' id="name" name='robot[name]'  class="validate"/>
+        <label for="name">Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input type='text' id="city" name='robot[city]'  class="validate"/>
+        <label for="city">City</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="input-field col s6">
+        <input type='text' id="state" name='robot[state]'/>
+        <label for="state">State</label>
+      </div>
+      <div class="input-field col s6">
+        <input type='text' id="birth_date" name='robot[birth_date]' class="validate"/>
+        <label for="birth_date">Birth Year (YYYY)</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="input-field col s6">
+        <input type='text' id="date_hired" name='robot[date_hired]' class="validate"/>
+        <label for="date_hired">Date Hired (DDMMYYYY)</label>
+      </div>
+      <div class="input-field col s6">
+        <input type='text' id="department" name='robot[department]' class="validate">
+        <label for="department">Department</label>
+        <input type='submit' />
+      </div>
+    </div>
 </form>
+
+</div>

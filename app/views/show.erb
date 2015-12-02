@@ -1,6 +1,16 @@
-<a href='/robots'>Robot Index</a>
+<div class="background grey lighten-2">
+<nav>
+  <div class="nav-wrapper light-blue darken-2">
+    <a href="#" class="brand-logo">Robo-Manager</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/robots">Robot Index</a></li>
+      <li><a href="/robots/new">Hire a Robot</a></li>
+    </ul>
+  </div>
+</nav>
 
-<img src="https://robohash.org/<%= @robot.avatar %>"
+<img src="https://robohash.org/<%= @robot.avatar %>">
 
 <h1><%= @robot.name %></h1>
 
@@ -9,3 +19,5 @@
 <p><%= @robot.birth_date %></p>
 <p><%= @robot.date_hired %></p>
 <p><%= @robot.department %></p>
+
+</div>

@@ -16,4 +16,12 @@ robots:
   birth_date: December 1st, 2015
   date_hired: December 2nd, 2015
   department: Badass Robots
-total: 3
+- id: 4
+  name: Plywood
+  city: Tree
+  state: Forest
+  avatar: PlywoodLegislative
+  birth_date: '1883'
+  date_hired: '12022015'
+  department: Legislative
+total: 4

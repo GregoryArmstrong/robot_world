@@ -43,7 +43,6 @@ class RobotManager
       target["name"] = data[:name]
       target["city"] = data[:city]
       target["state"] = data[:state]
-      target["avatar"] = data[:avatar]
       target["birth_date"] = data[:birth_date]
       target["date_hired"] = data[:date_hired]
       target["department"] = data[:department]
