@@ -19,5 +19,5 @@ class Robot
     @date_hired     = data["date_hired"]
     @department     = data["department"]
   end
-  
+
 end

@@ -8,12 +8,4 @@ robots:
   birth_date: October 27th, 1987
   date_hired: December 1st, 2015
   department: Whoop!
-- id: 2
-  name: Nebudchanezzar
-  city: Zion
-  state: The Matrix
-  avatar: Avatar
-  birth_date: Never
-  date_hired: Always
-  department: Humans
 total: 2
