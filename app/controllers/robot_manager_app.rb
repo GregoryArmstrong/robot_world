@@ -10,4 +10,14 @@ class RobotManagerApp < Sinatra::Base
     @robots = ["robot1", "robot2", "robot3"]
     erb :index
   end
+
+  get '/robots/new' do
+    erb :new
+  end
+
+  post '/robots' do
+    RobotManager.create(params[:robot])
+    redirect '/robots'
+  end
+
 end
