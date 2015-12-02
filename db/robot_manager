@@ -4,8 +4,16 @@ robots:
   name: Cornelius
   city: Orlando
   state: Florida
-  avatar: Avatar
+  avatar: Avatar2
   birth_date: October 27th, 1987
   date_hired: December 1st, 2015
   department: Whoop!
-total: 2
+- id: 3
+  name: Nebudchanezzar
+  city: Denver
+  state: Colorado
+  avatar: NebudchanezzarBadass Robots
+  birth_date: December 1st, 2015
+  date_hired: December 2nd, 2015
+  department: Badass Robots
+total: 3

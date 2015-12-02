@@ -6,6 +6,7 @@ class RobotManagerApp < Sinatra::Base
   set :method_override, true
 
   get '/' do
+    @robots = RobotManager.all
     erb :dashboard
   end
 
@@ -41,6 +42,10 @@ class RobotManagerApp < Sinatra::Base
   delete '/robots/:id' do |id|
     RobotManager.delete(id.to_i)
     redirect '/robots'
+  end
+
+  not_found do
+    erb :error
   end
 
 end

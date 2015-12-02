@@ -12,7 +12,10 @@ class RobotManager
       database['robots'] ||= []
       database['total'] ||= 0
       database['total'] += 1
-      database['robots'] << {"id" => database['total'], "name" => robot[:name], "city" => robot[:city], "state" => robot[:state], "avatar" => robot[:avatar], "birth_date" => robot[:birth_date], "date_hired" => robot[:date_hired], "department" => robot[:department] }
+      database['robots'] << {"id" => database['total'], "name" => robot[:name],
+                             "city" => robot[:city], "state" => robot[:state],
+                             "avatar" => "#{robot[:name] + robot[:department]}", "birth_date" => robot[:birth_date],
+                             "date_hired" => robot[:date_hired], "department" => robot[:department] }
     end
   end
 
