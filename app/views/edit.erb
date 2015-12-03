@@ -1,11 +1,11 @@
 <div class="background grey lighten-2">
 <nav>
   <div class="nav-wrapper light-blue darken-2">
-    <a href="#" class="brand-logo">Robo-Manager</a>
+    <a href="/" class="brand-logo waves-effect waves-light">Robo-Manager</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="/">Dashboard</a></li>
-      <li><a href="/robots">Robot Index</a></li>
-      <li><a href="/robots/new">Hire a Robot</a></li>
+      <li><a class="waves-effect waves-light" href="/">Dashboard</a></li>
+      <li><a class="waves-effect waves-light" href="/robots">Robot Index</a></li>
+      <li><a class="waves-effect waves-light" href="/robots/new">Hire a Robot</a></li>
     </ul>
   </div>
 </nav>
@@ -13,13 +13,36 @@
 <form action="/robots/<%= @robot.id %>" method="post">
   <input type="hidden" name="_method" value="put">
   <h1>Edit an existing Robot:</h1>
-  <input type='text' name='robot[name]' value="<%= @robot.name %>"/><br/>
-  <input type='text' name='robot[city]' value="<%= @robot.city %>"/><br/>
-  <input type='text' name='robot[state]' value="<%= @robot.state %>" /><br/>
-  <input type='text' name='robot[avatar]' value="<%= @robot.avatar %>"/><br/>
-  <input type='text' name='robot[birth_date]' value="<%= @robot.birth_date %>"/><br/>
-  <input type='text' name='robot[date_hired]' value="<%= @robot.date_hired %>"/><br/>
-  <input type='text' name='robot[department]' value="<%= @robot.department %>"/><br/>
+    <div class="row">
+      <div class="col s12">
+        <div class="input-field col s6">
+          <input type='text' id="name" name='robot[name]' value="<%= @robot.name %>"/>
+        </div>
+        <div class="input-field col s6">
+          <input type='text' name='robot[city]' value="<%= @robot.city %>"/>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="input-field col s6">
+          <input type='text' name='robot[state]' value="<%= @robot.state %>"/>
+        </div>
+        <div class="input-field col s6">
+          <input type='text' name='robot[birth_date]' value="<%= @robot.birth_date %>"/>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="input-field col s6">
+          <input type='text' name='robot[date_hired]' value="<%= @robot.date_hired %>"/>
+        </div>
+        <div class="input-field col s6">
+          <input type='text' name='robot[department]' value="<%= @robot.department %>"/>
+        </div>
+      </div>
+    </div>
   <input id="submit_button" type='submit' />
 </form>
 
