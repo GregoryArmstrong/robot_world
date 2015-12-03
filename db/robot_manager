@@ -32,4 +32,12 @@ robots:
   birth_date: '2015'
   date_hired: '12032015'
   department: Turing
-total: 5
+- id: 6
+  name: Optimus Prime
+  city: Cybertron
+  state: Cybertronia
+  avatar: Optimus PrimeAutobots
+  birth_date: '2046'
+  date_hired: '2015'
+  department: Autobots
+total: 6
