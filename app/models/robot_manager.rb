@@ -12,7 +12,7 @@ class RobotManager
 
   def self.create(robot)
     database.from(:robots).insert(name: robot[:name], city: robot[:city],
-                                  state: robot[:state], avatar: robot["#{robot[:name] + robot[:department]}"],
+                                  state: robot[:state], avatar: "#{robot[:name]} + #{robot[:department]}",
                                   birth_date: robot[:birth_date], date_hired: robot[:date_hired],
                                   department: robot[:department])
   end
