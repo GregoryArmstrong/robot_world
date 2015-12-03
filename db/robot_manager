@@ -8,14 +8,6 @@ robots:
   birth_date: October 27th, 1987
   date_hired: December 1st, 2015
   department: Whoop!
-- id: 3
-  name: Nebudchanezzar
-  city: Denver
-  state: Colorado
-  avatar: NebudchanezzarBadass Robots
-  birth_date: December 1st, 2015
-  date_hired: December 2nd, 2015
-  department: Badass Robots
 - id: 4
   name: Plywood
   city: Tree
@@ -32,12 +24,20 @@ robots:
   birth_date: '2015'
   date_hired: '12032015'
   department: Turing
-- id: 6
-  name: Optimus Prime
-  city: Cybertron
-  state: Cybertronia
-  avatar: Optimus PrimeAutobots
-  birth_date: '2046'
-  date_hired: '2015'
-  department: Autobots
-total: 6
+- id: 7
+  name: Steve
+  city: Montrose
+  state: Colorado
+  avatar: SteveSanitation
+  birth_date: '1985'
+  date_hired: '03122015'
+  department: Sanitation
+- id: 8
+  name: Pentler
+  city: Favreland
+  state: Wisconsin
+  avatar: PentlerSanitation
+  birth_date: '1991'
+  date_hired: '03102015'
+  department: Sanitation
+total: 9

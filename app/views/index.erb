@@ -29,11 +29,12 @@
         <td><%= robot.name %></td>
         <td><%= robot.department %></td>
         <td><img src="https://robohash.org/<%= robot.avatar %>"></td>
-        <td><a id="edit_button" href="/robots/<%= robot.id %>/edit">Edit Robot</a></td>
+        <td><a class="btn waves-effect waves-light light-blue darken-2" id="edit_button" href="/robots/<%= robot.id %>/edit">Edit Robot</a></td>
         <td><form action="/robots/<%= robot.id %>" method="post">
             <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="Delete">
-          </form></td>
+            <input class="btn modal-trigger waves-effect waves-light red darken-4" type="submit" value="Delete">
+          </form>
+        </td>
       </tr>
     <% end %>
   </table>

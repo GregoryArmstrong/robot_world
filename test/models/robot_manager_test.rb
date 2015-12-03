@@ -10,7 +10,7 @@ class RobotManagerTest < Minitest::Test
 
   def test_robot_can_be_created
     create_robots(1)
-    robot = RobotManager.find(1)
+    robot = RobotManager.all.last
 
     assert_equal "name1", robot.name
     assert_equal "city1", robot.city
@@ -36,7 +36,7 @@ class RobotManagerTest < Minitest::Test
 
   def test_can_find_a_specific_robot
     create_robots(2)
-    found = RobotManager.find(2)
+    found = RobotManager.all.last
 
     assert_equal "name2", found.name
     assert_equal "city2", found.city
@@ -50,7 +50,7 @@ class RobotManagerTest < Minitest::Test
     create_robots(1)
     RobotManager.update(1, {name: "name5", city: "city5" })
 
-    found = RobotManager.find(1)
+    found = RobotManager.all.last
 
     assert_equal "name5", found.name
     assert_equal "city5", found.city
@@ -58,15 +58,11 @@ class RobotManagerTest < Minitest::Test
 
   def test_can_delete_a_created_robot
     create_robots(3)
-    found = RobotManager.find(2)
+    total = RobotManager.all.count
 
-    assert found
+    RobotManager.delete(RobotManager.all.first.id)
 
-    RobotManager.delete(2)
-
-    found = RobotManager.all
-
-    assert_equal 2, found.size
+    assert_equal (total - 1), RobotManager.all.count
   end
 
 end
