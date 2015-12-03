@@ -29,7 +29,7 @@
         <td><%= robot.name %></td>
         <td><%= robot.department %></td>
         <td><img src="https://robohash.org/<%= robot.avatar %>"></td>
-        <td><a href="/robots/<%= robot.id %>/edit">Edit Robot</a></td>
+        <td><a id="edit_button" href="/robots/<%= robot.id %>/edit">Edit Robot</a></td>
         <td><form action="/robots/<%= robot.id %>" method="post">
             <input type="hidden" name="_method" value="delete">
             <input type="submit" value="Delete">
