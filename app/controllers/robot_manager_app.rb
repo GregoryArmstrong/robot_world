@@ -5,6 +5,7 @@ class RobotManagerApp < Sinatra::Base
 
   get '/' do
     @robots = RobotManager.all
+    @age = RobotManager.average_age
     erb :dashboard
   end
 

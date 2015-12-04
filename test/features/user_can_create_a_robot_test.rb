@@ -11,7 +11,9 @@ class UserCanCreateARobotTest < FeatureTest
     fill_in('robot[birth_date]', :with => "1987")
     fill_in('robot[date_hired]', :with => "2015")
     fill_in('robot[department]', :with => "Avengers")
-    click_button('submit_button')
+    within('.center-align') do
+      click_button('submit')
+    end
 
     assert_equal '/robots', current_path
     within('#robot_table') do

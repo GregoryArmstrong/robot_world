@@ -17,6 +17,10 @@ class RobotManager
                                   department: robot[:department])
   end
 
+  def self.robots_table
+    database.from(:robots)
+  end
+
   def self.raw_robots
     database.transaction do
       database['robots'] || []
@@ -24,7 +28,7 @@ class RobotManager
   end
 
   def self.all
-    raw_data = database.from(:robots).to_a
+    raw_data = robots_table.to_a
     raw_data.map { |data| Robot.new(data) }
   end
 
@@ -33,16 +37,24 @@ class RobotManager
   end
 
   def self.find(id)
-    data = database.from(:robots).where(id: id).to_a.first
+    data = robots_table.where(id: id).to_a.first
     Robot.new(data)
   end
 
   def self.update(id, data)
-    target = database.from(:robots).update(data)
+    target = robots_table.update(data)
   end
 
   def self.delete(id)
-    database.from(:robots).where(id: id).delete
+    robots_table.where(id: id).delete
   end
+
+  def self.average_age
+    ages = robots_table.map do |robot|
+      robot[:date_hired][-4..-1].to_i - robot[:birth_date].to_i
+    end
+    ages.reduce(:+) / database.from(:robots).to_a.size
+  end
+ # a breakdown of how many robots were hired each year, and number of robots in each department/city/state.
 
 end

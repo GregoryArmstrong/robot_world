@@ -65,4 +65,12 @@ class RobotManagerTest < Minitest::Test
     assert_equal (total - 1), RobotManager.all.count
   end
 
+  def test_can_average_ages_of_created_robots
+    RobotManager.create({name: "robot1", city: "city1", state: "state1", birth_date: "1987", date_hired: "03122015", department: "department1"})
+    RobotManager.create({name: "robot2", city: "city2", state: "state2", birth_date: "1985", date_hired: "03122015", department: "department2"})
+    RobotManager.create({name: "robot3", city: "city3", state: "state3", birth_date: "1990", date_hired: "03122015", department: "department3"})
+
+    assert_equal 27, RobotManager.average_age
+  end
+
 end

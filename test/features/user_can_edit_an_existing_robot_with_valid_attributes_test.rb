@@ -4,11 +4,12 @@ class UserCanEditAnExistingRobotTest < FeatureTest
 
   def test_user_can_edit_a_robot_with_valid_attributes
     RobotManager.create(name: "Samus", city: "Babylon", state: "Egypt", birth_date: "1987", date_hired: "2015", department: "Avengers")
+    selected = RobotManager.all.last
     visit '/robots'
 
     click_link('edit_button')
 
-    assert_equal '/robots/1/edit', current_path
+    assert_equal "/robots/#{selected.id}/edit", current_path
 
     fill_in('robot[name]', :with => "Cornelius")
     click_button('submit_button')
