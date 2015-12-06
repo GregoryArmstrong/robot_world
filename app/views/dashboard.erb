@@ -18,30 +18,37 @@
     </ul>
 </div>
 <div class="center-align">
-  <h5>Robot Statistics</h5>
-</div>
-<div class="row center-align">
-  <div class="col s12 m4">
-    <div class="card light-blue darken-2">
-      <div class="card-content white-text">
-        <span class="card-title">Average Robot Age</span>
-        <p><%= @age %> years young</p>
+  <h5>Robot Statistics:</h5>
+      <div class="card light-blue darken-2">
+        <div class="card-content white-text">
+          <span class="card-title">Average Robot Age</span>
+          <p><%= @age %> years young</p>
+        </div>
       </div>
-    </div>
+      <div class="card light-blue darken-2">
+        <div class="card-content white-text">
+          <span class="card-title">Robots Hired By Year</span>
+          <table class="highlight centered responsive-table" id="robot_year_table">
+                <thead>
+                  <tr>
+                      <th data-field="Year" class="col s6">Year</th>
+                      <th data-field="RobotsHired" class="col s6">Robots Hired</th>
+                  </tr>
+                </thead>
+            <tbody>
+              <% years = {} %>
+              <% @robots.each do |robot| %>
+                <% years[robot.date_hired[-4..-1]] += 1 unless years[robot.date_hired[-4..-1]].nil?%>
+                <% years[robot.date_hired[-4..-1]] = 1 if years[robot.date_hired[-4..-1]].nil? %>
+              <% end %>
+              <% years.each do |k, v| %>
+                <tr>
+                <td><%= k %></td>
+                <td><%= v %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
   </div>
-</div>
-<!-- <div id="statistics" class="centered">
-  <table>
-    <thead>
-      <tr>
-        <th data-field="">Year</th>
-        <th data-field=""
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->

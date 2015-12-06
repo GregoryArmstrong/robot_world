@@ -32,17 +32,13 @@ class RobotManager
     raw_data.map { |data| Robot.new(data) }
   end
 
-  def self.raw_robot(id)
-    raw_robots.find { |robot| robot["id"] == id }
-  end
-
   def self.find(id)
     data = robots_table.where(id: id).to_a.first
     Robot.new(data)
   end
 
   def self.update(id, data)
-    target = robots_table.update(data)
+    target = robots_table.where(id: id).update(data)
   end
 
   def self.delete(id)
