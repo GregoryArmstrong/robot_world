@@ -51,6 +51,5 @@ class RobotManager
     end
     ages.reduce(:+) / database.from(:robots).to_a.size
   end
- # a breakdown of how many robots were hired each year, and number of robots in each department/city/state.
 
 end

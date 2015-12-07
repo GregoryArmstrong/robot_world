@@ -3,7 +3,6 @@ require_relative '../test_helper'
 class UserCanCreateARobotTest < FeatureTest
 
   def test_user_can_create_a_robot_with_valid_attributes
-    skip
     visit '/robots/new'
 
     fill_in('robot[name]', :with => "Samus")

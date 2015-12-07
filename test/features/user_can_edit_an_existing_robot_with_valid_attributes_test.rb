@@ -3,7 +3,6 @@ require_relative '../test_helper'
 class UserCanEditAnExistingRobotTest < FeatureTest
 
   def test_user_can_edit_a_robot_with_valid_attributes
-    skip
     RobotManager.create(name: "Samus", city: "Babylon", state: "Egypt", birth_date: "1987", date_hired: "2015", department: "Avengers")
     selected = RobotManager.all.last
     visit '/robots'

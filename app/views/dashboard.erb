@@ -1,54 +1,146 @@
 <div class="background grey lighten-2">
-<nav>
-  <div class="nav-wrapper light-blue darken-2">
-    <a href="/" class="brand-logo waves-effect waves-light">Robo-Manager</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li class="active"><a href="/">Dashboard</a></li>
-      <li><a class="waves-effect waves-light" href="/robots">Robot Index</a></li>
-      <li><a class="waves-effect waves-light" href="/robots/new">Hire a Robot</a></li>
-    </ul>
+  <nav>
+    <div class="nav-wrapper light-blue darken-2">
+      <a href="/" class="brand-logo waves-effect waves-light">Robo-Manager</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="active"><a href="/">Dashboard</a></li>
+        <li><a class="waves-effect waves-light" href="/robots">Robot Index</a></li>
+        <li><a class="waves-effect waves-light" href="/robots/new">Hire a Robot</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div id="greeting" class="flow-text center-align">
+    <h1>Welcome to Robo-Manager!</h1>
+    <br/>
+      <ul>
+        <li><a class="waves-effect waves-light btn light-blue darken-3" href="/robots">Robot Index</a></li>
+        <br/>
+        <li><a class="waves-effect waves-light btn light-blue darken-4" href="/robots/new">Hire a Robot!</a></li>
+      </ul>
   </div>
-</nav>
-<div id="greeting" class="flow-text center-align">
-  <h1>Welcome to Robo-Manager!</h1>
-    <ul>
-      <li><a class="waves-effect waves-light btn light-blue darken-3" href="/robots">Robot Index</a></li>
+<br/>
+<br/>
+<br/>
+  <div class="center-align">
+    <h3>Currently Employed Robot Statistics:</h3>
       <br/>
-      <li><a class="waves-effect waves-light btn light-blue darken-4" href="/robots/new">Hire a Robot!</a></li>
-    </ul>
-</div>
-<div class="center-align">
-  <h5>Robot Statistics:</h5>
-      <div class="card light-blue darken-2">
-        <div class="card-content white-text">
-          <span class="card-title">Average Robot Age</span>
-          <p><%= @age %> years young</p>
+        <div class="card light-blue">
+          <div class="card-content white-text">
+            <span class="card-title">Average Robot Age</span>
+            <p><%= @age %> years young</p>
+          </div>
         </div>
-      </div>
-      <div class="card light-blue darken-2">
-        <div class="card-content white-text">
-          <span class="card-title">Robots Hired By Year</span>
-          <table class="highlight centered responsive-table" id="robot_year_table">
-                <thead>
-                  <tr>
-                      <th data-field="Year" class="col s6">Year</th>
-                      <th data-field="RobotsHired" class="col s6">Robots Hired</th>
-                  </tr>
-                </thead>
-            <tbody>
-              <% years = {} %>
-              <% @robots.each do |robot| %>
-                <% years[robot.date_hired[-4..-1]] += 1 unless years[robot.date_hired[-4..-1]].nil?%>
-                <% years[robot.date_hired[-4..-1]] = 1 if years[robot.date_hired[-4..-1]].nil? %>
-              <% end %>
-              <% years.each do |k, v| %>
-                <tr>
-                <td><%= k %></td>
-                <td><%= v %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+        <div class="card light-blue darken-1">
+          <div class="container">
+            <div class="card-content white-text">
+              <span class="card-title">Robots Hired By Year</span>
+                <table class="centered responsive-table" id="robot_year_table">
+                  <thead>
+                    <tr>
+                      <th data-field="Year">Year Hired</th>
+                      <th data-field="Robots Hired">Robots Hired</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                  <% years = {} %>
+                  <% @robots.each do |robot| %>
+                    <% years[robot.date_hired[-4..-1]] += 1 unless years[robot.date_hired[-4..-1]].nil?%>
+                    <% years[robot.date_hired[-4..-1]] = 1 if years[robot.date_hired[-4..-1]].nil? %>
+                  <% end %>
+                  <% years.each do |k, v| %>
+                    <tr>
+                      <td><%= k %></td>
+                      <td><%= v %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="card light-blue darken-2">
+          <div class="container">
+            <div class="card-content white-text">
+              <span class="card-title">Robots Hired By Department</span>
+                <table class="centered responsive-table" id="robot_department_table">
+                  <thead>
+                    <tr>
+                      <th data-field="Department">Department</th>
+                      <th data-field="Robots Employed">Robots Employed</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                  <% departments = {} %>
+                  <% @robots.each do |robot| %>
+                    <% departments[robot.department] += 1 unless departments[robot.department].nil? %>
+                    <% departments[robot.department] = 1 if departments[robot.department].nil? %>
+                  <% end %>
+                  <% departments.each do |k, v| %>
+                    <tr>
+                      <td><%= k %></td>
+                      <td><%= v %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card light-blue darken-3">
+          <div class="container">
+            <div class="card-content white-text">
+              <span class="card-title">Robots Hired By Hometown</span>
+                <table class="centered responsive-table" id="robot_city_table">
+                  <thead>
+                    <tr>
+                      <th data-field="Hometown">Hometown</th>
+                      <th data-field="NumberOfRobots">Number of Robots</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                  <% cities = {} %>
+                  <% @robots.each do |robot| %>
+                    <% cities[robot.city] += 1 unless cities[robot.city].nil? %>
+                    <% cities[robot.city] = 1 if cities[robot.city].nil? %>
+                  <% end %>
+                  <% cities.each do |k, v| %>
+                    <tr>
+                      <td><%= k %></td>
+                      <td><%= v %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card light-blue darken-4">
+          <div class="container">
+            <div class="card-content white-text">
+              <span class="card-title">Robots Hired By State</span>
+                <table class="centered responsive-table" id="robot_state_table">
+                  <thead>
+                    <tr>
+                      <th data-field="State">State</th>
+                      <th data-field="NumberOfRobots">Number of Robots</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                  <% states = {} %>
+                  <% @robots.each do |robot| %>
+                    <% states[robot.state] += 1 unless states[robot.state].nil? %>
+                    <% states[robot.state] = 1 if states[robot.state].nil? %>
+                  <% end %>
+                  <% states.each do |k, v| %>
+                    <tr>
+                      <td><%= k %></td>
+                      <td><%= v %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
   </div>
+</div>

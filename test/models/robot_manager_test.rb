@@ -48,7 +48,8 @@ class RobotManagerTest < Minitest::Test
 
   def test_update_can_modify_an_existing_robot
     create_robots(1)
-    RobotManager.update(1, {name: "name5", city: "city5" })
+    awaiting_update = RobotManager.all.last
+    RobotManager.update(awaiting_update.id, {name: "name5", city: "city5" })
 
     found = RobotManager.all.last
 
